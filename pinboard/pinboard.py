@@ -181,7 +181,7 @@ class PinboardCall(object):
             raise
         else:
             if parse_response:
-                json_response = json.load(response)
+                json_response = json.loads(response.read().decode('utf-8-sig'))
 
                 for field in Pinboard.DATE_FIELDS:
                     if field in json_response:
