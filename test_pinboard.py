@@ -14,6 +14,7 @@ try:
 except ImportError:
     from ConfigParser import RawConfigParser
 
+
 class TestPinboardAPIPropagation(unittest.TestCase):
     def setUp(self):
         self.pinboard = Pinboard(os.environ['PINBOARD_API_TOKEN'])
@@ -168,7 +169,7 @@ class TestPinboardAPI(unittest.TestCase):
         self.pinboard.posts.delete(url=url)
 
     def test_add_and_remove_bookmark_through_api(self):
-        random_suffix = "".join(random.choice(string.letters) for i in range (6))
+        random_suffix = "".join(random.choice(string.letters) for i in range(6))
         url = "http://example.com/{}".format(random_suffix)
 
         self._test_add_bookmark_through_api(url)
@@ -177,4 +178,3 @@ class TestPinboardAPI(unittest.TestCase):
 if __name__ == "__main__":
     suite = unittest.TestLoader().loadTestsFromTestCase(TestPinboardAPI)
     unittest.TextTestRunner(verbosity=2).run(suite)
-

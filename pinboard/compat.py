@@ -1,10 +1,6 @@
 import sys
 
-
-PY2 = sys.version_info[0] == 2
-
-
-if PY2:
+if sys.version_info[0] == 2:
     from urllib import urlencode
     from urllib2 import build_opener, HTTPError, HTTPSHandler, Request
     from urlparse import urlparse

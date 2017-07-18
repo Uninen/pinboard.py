@@ -12,6 +12,7 @@ PINBOARD_DATETIME_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
 PINBOARD_ALTERNATE_DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 PINBOARD_DATE_FORMAT = "%Y-%m-%d"
 
+
 class Bookmark(object):
     def __init__(self, payload, token):
         self.description = payload['description']
@@ -191,8 +192,8 @@ class PinboardCall(object):
                 elif self.components in [["posts", "get"], ["posts", "recent"]]:
                     json_response['posts'] = [Bookmark(k, self.token) for k in json_response['posts']]
                 elif self.components == ["posts", "dates"]:
-                    json_response['dates'] = {Pinboard.date_from_string(k): int(v) \
-                            for k, v in iteritems(json_response['dates'])}
+                    json_response['dates'] = {Pinboard.date_from_string(k): int(v)
+                        for k, v in iteritems(json_response['dates'])}
                 elif self.components == ["posts", "update"]:
                     return json_response['update_time']
                 elif self.components == ["tags", "get"]:
@@ -213,4 +214,3 @@ class PinboardCall(object):
                 return json_response
             else:
                 return response
-
